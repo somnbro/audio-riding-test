@@ -1,4 +1,6 @@
 from analysis.voice_detection import is_voice
+from analysis.breath_detection import is_breath
+
 import numpy as np
 from analysis.loudness2 import calculate_loudness
 
@@ -114,6 +116,10 @@ def ride_volume(audio, sample_rate, target_db=-18):
 
             continue
 
+        if is_breath(chunk, sample_rate):
+
+            gains.append(0.7)
+            continue
 
         current_db = calculate_loudness(chunk)
 
