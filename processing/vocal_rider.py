@@ -6,6 +6,26 @@ from analysis.loudness2 import calculate_loudness
 def db_to_gain(db):
     return 10 ** (db / 20)
 
+def calculate_gain_adjustment(current_db, target_db):
+
+    difference = target_db - current_db
+
+
+    # Ignore tiny differences
+    if abs(difference) < 1:
+        return 1.0
+
+
+    # Limit correction
+    difference = np.clip(
+        difference,
+        -4,
+        4
+    )
+
+
+    return db_to_gain(difference)
+
 
 def interpolate_gains(chunk_data, audio_length):
 
@@ -97,17 +117,10 @@ def ride_volume(audio, sample_rate, target_db=-18):
 
         current_db = calculate_loudness(chunk)
 
-        difference = target_db - current_db
-
-
-        difference = np.clip(
-            difference,
-            -6,
-            6
+        gain = calculate_gain_adjustment(
+            current_db,
+            target_db
         )
-
-
-        gain = db_to_gain(difference)
 
 
         chunk_data.append({
