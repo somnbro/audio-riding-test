@@ -19,7 +19,7 @@ processed = ride_volume(
 )
 
 save_audio(
-    "audio/output/test_smart_rider4.wav",
+    "audio/output/test_ai_rider.wav",
     processed,
     sr
 )
