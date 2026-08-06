@@ -7,6 +7,7 @@ sys.path.append(ROOT_DIR)
 
 from utils.audio import load_audio, save_audio
 from processing.vocal_rider import ride_volume
+from processing.plosives import reduce_plosives
 
 
 audio, sr = load_audio(
@@ -15,6 +16,11 @@ audio, sr = load_audio(
 
 processed = ride_volume(
     audio,
+    sr
+)
+
+processed = reduce_plosives(
+    processed,
     sr
 )
 
