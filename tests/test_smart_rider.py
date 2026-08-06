@@ -8,13 +8,15 @@ sys.path.append(ROOT_DIR)
 from utils.audio import load_audio, save_audio
 from processing.vocal_rider import ride_volume
 from processing.plosives import reduce_plosives
+from processing.wind_reduction import reduce_wind
 
 
 audio, sr = load_audio(
     "audio/input/test.wav"
 )
 
-processed = ride_volume(
+
+processed = reduce_wind(
     audio,
     sr
 )
@@ -23,6 +25,13 @@ processed = reduce_plosives(
     processed,
     sr
 )
+
+processed = ride_volume(
+    processed,
+    sr
+)
+
+
 
 save_audio(
     "audio/output/test_ai_rider.wav",

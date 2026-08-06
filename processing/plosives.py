@@ -1,5 +1,12 @@
-import numpy as np
+import os
+import sys
 
+# Finds the absolute path to AI-PROJECT and adds it to Python's search path
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(ROOT_DIR)
+
+import numpy as np
+#from processing.gain_envelope import apply_gain_smooth
 
 def reduce_plosives(audio, sample_rate):
 
@@ -22,6 +29,12 @@ def reduce_plosives(audio, sample_rate):
 
         if peak > threshold:
 
-            processed[start:end] *= 0.8
+            processed[start:end] *= 0.2
+            # apply_gain_smooth(
+            #     processed,
+            #     start,
+            #     end,
+            #     0.2
+            # )
 
     return processed
