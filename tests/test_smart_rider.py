@@ -8,7 +8,7 @@ sys.path.append(ROOT_DIR)
 from utils.audio import load_audio, save_audio
 from processing.vocal_rider import ride_volume
 from processing.plosives import reduce_plosives
-from processing.wind_reduction import reduce_wind
+from processing.wind_reduction import reduce_wind, filter_wind
 
 
 audio, sr = load_audio(
@@ -16,7 +16,7 @@ audio, sr = load_audio(
 )
 
 
-processed = reduce_wind(
+processed = filter_wind(
     audio,
     sr
 )

@@ -5,28 +5,29 @@ def apply_gain_smooth(audio, start, end, gain):
 
     length = end - start
 
-    fade_length = int(length * 0.05)
+    attack = int(length * 0.1)
+    release = int(length * 0.2)
 
     envelope = np.ones(length)
 
 
-    # fade down
-    envelope[:fade_length] = np.linspace(
+    # Attack
+    envelope[:attack] = np.linspace(
         1,
         gain,
-        fade_length
+        attack
     )
 
 
-    # hold reduction
-    envelope[fade_length:-fade_length] = gain
+    # Hold
+    envelope[attack:length-release] = gain
 
 
-    # fade back up
-    envelope[-fade_length:] = np.linspace(
+    # Release
+    envelope[length-release:] = np.linspace(
         gain,
         1,
-        fade_length
+        release
     )
 
 
