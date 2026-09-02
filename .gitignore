@@ -4,4 +4,4 @@ __pycache__/
 .env
 *.__pycache__
 *.pyc
-archival_files
+archival_files/
