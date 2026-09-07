@@ -1,0 +1,48 @@
+#audio-upload {
+  display: none;
+}
+
+#audio-upload-text {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+
+}
+
+.audioInputBlock {
+  padding: 5vw;
+  border:2px solid rgb(30, 116, 159);
+  border-radius: 10px;
+  background-color: rgba(30, 116, 159, 0.132);
+}
+
+.btnHolder {
+    display: inline-flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.btnHolder button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.509);
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: white;
+  
+}
+
+.btnHolder p {
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.btnHolder audio {
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
