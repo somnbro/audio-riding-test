@@ -5,3 +5,6 @@ __pycache__/
 *.__pycache__
 *.pyc
 archival_files/
+experiments/
+pipeline/
+ai_only_demo/
